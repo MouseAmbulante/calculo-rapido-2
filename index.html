@@ -493,6 +493,8 @@
     </div>
     <!-- TELA DO JOGO -->
 
+	
+
     <!-- MENU -->
     <div class="container_menu" id="container_menu">
         <!-- BACKGROUND DO MENU -->
@@ -592,8 +594,8 @@
 
         <!-- OPÇÕES DO MENU -->
         <div class="tela_comum" id="opcoes_menu">
-            <div class="opcoes" id="opcao_jogar1" onclick="chama_modo_jogo()" onmouseenter="anima_opcao1()"
-                onmouseout="desanima_opcao1()">
+            <div class="opcoes" id="opcao_jogar1" onclick="chama_modo_jogo()" onmouseover="anima_opcao1()"
+                onmouseout="desanima_opcao1()" onmouseenter="audio_hover_funcao()">
                 <p class="texto_simples" id="texto_opcao1">CÁLCULO RÁPIDO</p>
                 <div class="organiza_icones_menu">
                     <img src="IMG/ícones_menu/soma_azulescuro.png" class="quatro_icones_menu" alt="">
@@ -611,7 +613,8 @@
                 </div>
                 <p class="texto_simples" id="texto_opcao1_2">CÁLCULO RÁPIDO</p>
             </div>
-            <div class="opcoes" id="opcao_jogar2" onmouseenter="anima_opcao2()" onmouseout="desanima_opcao2()">
+            <div class="opcoes" id="opcao_jogar2" onclick="chama_opcao()"  onmouseover="anima_opcao2()" onmouseout="desanima_opcao2()"
+				onmouseenter="audio_hover_funcao()">
                 <p class="texto_simples" id="texto_opcao2">CÁLCULO RÁPIDO</p>
                 <div class="organiza_icones_menu">
                     <img src="IMG/ícones_menu/icone_opcoes.png" class="engrenagens" alt="">
@@ -629,7 +632,8 @@
                 </div>
                 <p class="texto_simples" id="texto_opcao2_2">CÁLCULO RÁPIDO</p>
             </div>
-            <div class="opcoes" id="opcao_jogar3" onmouseenter="anima_opcao3()" onmouseout="desanima_opcao3()">
+            <div class="opcoes" id="opcao_jogar3" onmouseover="anima_opcao3()" onmouseout="desanima_opcao3()"
+				onmouseenter="audio_hover_funcao()">
                 <p class="texto_simples" id="texto_opcao3">CÁLCULO RÁPIDO</p>
                 <div class="organiza_icones_menu">
                     <img src="IMG/ícones_menu/icone_ajuda2.png" class="ajuda" alt="">
@@ -652,7 +656,8 @@
                 </div>
                 <p class="texto_simples" id="texto_opcao3_2">CÁLCULO RÁPIDO</p>
             </div>
-            <div class="opcoes" id="opcao_jogar4" onmouseenter="anima_opcao4()" onmouseout="desanima_opcao4()">
+            <div class="opcoes" id="opcao_jogar4" onmouseover="anima_opcao4()" onmouseout="desanima_opcao4()"
+				onmouseenter="audio_hover_funcao()">
                 <p class="texto_simples" id="texto_opcao4">CÁLCULO RÁPIDO</p>
                 <div class="organiza_icones_menu">
                     <img src="IMG/ícones_menu/icone_sobre.png" class="sobre" alt="">
@@ -676,6 +681,83 @@
 
     </div>
     <!-- MENU -->
+
+
+    <!-- OPÇÕES/CONFIGURAÇÕES -->
+		<!-- Header Opções  -->
+        <div id="tela_opcoes" class="tela_comum">
+		<div class="linha_etiqueta" id="linha_opcoes">
+            <div class="header_janela" id="voltar_header">
+                <div class="voltar_btn" onclick="voltar5(), audio_hover_reverso_funcao()" onmouseenter="audio_hover_funcao()">
+                    <img src="IMG/ícones_menu/voltar_icone.png" alt="voltar_icone" id="voltar_icone">
+                    <p class="texto_simples" id="voltar_texto">VOLTAR</p>
+                </div>
+            </div>
+            <div class="header_janela" id="classico_header">
+                <img src="IMG/ícones_menu/logo_sem_neon.png" alt="" id="logo_menu">
+                <p class="texto_simples" id="texto_logo_menu">OPÇÕES</p>
+            </div>
+            <div class="header_janela" id="conta_header">
+                <div class="conta">
+                    <!-- <div id="imagem_conta"></div> -->
+                    <p class="texto_simples" id="username"></p>
+                </div>
+            </div>
+		</div>
+		<!-- Header Opções  -->
+		
+		<!-- Placa Áudio  -->
+		<div class="container_placa">
+			<div class="suporte"></div>
+			<div class="suporte"></div>
+		</div>
+
+		<div class="container_titulo_placa">
+			<div class="titulo_placa">
+				<p class="texto_simples" id="placa_texto">SONS E ÁUDIOS</p>
+				<img src="IMG/imagens_opcoes/audio_icone.png" width="40px"  alt="" id="audio_icone_opcoes">
+			</div>
+		</div>
+		<!-- Placa Áudio  -->
+		
+		<div class="container_knobs">
+			<div class="caixa_som_menor">
+				<div class="caixa_som_header" id="caixa_som_header1">
+					<p class="knob_texto">VOL. EFEITOS</p>
+				</div>
+				<div class="caixa_som_body">
+					<input type="range" min="0" max="100" value="30" class="slider" id="slider_efeitos" onmouseover="audio_hover_funcao()">
+					<div class="caixa_volume" id="caixa_volume_efeitos">
+						<p class="texto_resultados" id="volume_porcentagem1">30%</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="caixa_som_maior">
+				<div class="caixa_som_header">
+					<p class="knob_texto" style="font-size: 3vh;">VOL. GERAL</p>
+				</div>
+				<div class="caixa_som_body" id="caixa_som_body_maior">
+					<input type="range" min="0" max="100" value="30" class="slider" id="slider_geral" orient="vertical" onmouseover="audio_hover_funcao()">
+					<div class="caixa_volume" id="caixa_volume_geral">
+						<p class="texto_resultados" id="volume_porcentagem2" style="font-size: 50px;">30%</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="caixa_som_menor" id="caixa_som3">
+				<div class="caixa_som_header" id="caixa_som_header2">
+					<p class="knob_texto">VOL. AJUDA</p>
+				</div>
+				<div class="caixa_som_body">
+					<input type="range" min="0" max="100" value="50" class="slider" id="slider_ajuda" onmouseover="audio_hover_funcao()">
+					<div class="caixa_volume" id="caixa_volume_ajuda">
+						<p class="texto_resultados" id="volume_porcentagem3">50%</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- OPÇÕES/CONFIGURAÇÕES -->
 
     <script src="JS/main.js"></script>
 </body>

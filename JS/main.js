@@ -4,6 +4,8 @@
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 let dificuldade = 1;
 
+// --------------------------------- ÁUDIOS ----------------------------------
+
 // Iniciar Áudios
 	const audio_intro = new Audio();
 	audio_intro.src = "./AUDIO/INTRO/intro_cr2.mp3";
@@ -41,6 +43,56 @@ let dificuldade = 1;
     const audioStreak = new Audio();
 	audioStreak.src = `./AUDIO/SFX_COMBO/PerdeStreak.mp3`;
 
+	const audio_opcoes = new Audio();
+	audio_opcoes.src = "./AUDIO/GERAL/seleciona_opcoes.mp3";
+
+	const audio10X = new Audio();
+	const audio1X = new Audio();
+	const audio_ajuda = new Audio();
+
+	const slider_geral = document.getElementById("slider_geral");
+	const slider_efeitos = document.getElementById("slider_efeitos");
+	const slider_ajuda = document.getElementById("slider_ajuda");
+	const volume_porcentagem_efeitos = document.getElementById("volume_porcentagem1");
+	const volume_porcentagem_geral = document.getElementById("volume_porcentagem2");
+	const volume_porcentagem_ajuda = document.getElementById("volume_porcentagem3");
+	let volume_geral = 0.3;
+	let volume_efeitos = 0.3;
+	let volume_ajuda = 0.5;
+	
+	slider_geral.addEventListener('input', function() {
+		volume_porcentagem_geral.textContent = slider_geral.value + "%";
+		volume_geral = slider_geral.value / 100;
+	})
+
+	slider_geral.addEventListener('mouseup', function() {
+		audio10X.src = "./AUDIO/SFX_COMBO/10X.mp3";
+		audio10X.volume = volume_geral;
+		audio10X.pause();
+		audio10X.play();
+	})
+	
+	slider_efeitos.addEventListener('input', function() {
+		volume_porcentagem_efeitos.textContent = slider_efeitos.value + "%";
+		volume_efeitos = slider_efeitos.value / 100;
+	})
+	
+	let numero_aleatorio_teste;
+	slider_efeitos.addEventListener('mouseup', function() {
+		numero_aleatorio_teste = Math.floor(Math.random(numero_aleatorio_teste) * 8) + 1;
+		audio1X.src = `./AUDIO/SFX_COMBO/1.${numero_aleatorio_teste}x.mp3`;
+		audio1X.volume = volume_geral * volume_efeitos;
+		audio1X.pause();
+		audio1X.play();
+	})
+
+	slider_ajuda.addEventListener('input', function() {
+		volume_porcentagem_ajuda.textContent = slider_ajuda.value + "%";
+		volume_ajuda = slider_ajuda.value / 100;
+	})
+
+// --------------------------------- ÁUDIOS ----------------------------------
+
 // ---------------------- VARIÁVEIS E CONSTS IMPORTANTES ---------------------
 
 // ---------------------------- INTRO DO JOGO --------------------------------
@@ -58,7 +110,7 @@ let skipou = 0;
 botao_intro.onclick = async function () {
     console.log("EM INÍCIO!");
     em_intro = true;
-    audio_intro.volume = 1;
+    audio_intro.volume = volume_geral * volume_efeitos;
     audio_intro.play();
     intro_tela.classList.add("intro_animation");
     botao_intro.style.display = "none";
@@ -99,7 +151,7 @@ async function diminui_volume_intro() {
         pressione_start_tela();
 
     } else {
-        audio_intro.volume -= 0.1;
+        audio_intro.volume -= 0.01;
         console.log(audio_intro.volume);
     }
 }
@@ -136,7 +188,7 @@ document.addEventListener('keydown', async function () {
         pressione_qualquer_tecla.classList.replace("pressione_qualquer_tecla_animation2", "pressione_qualquer_tecla_animation");
         em_menu = true;
         console.log("EM MENU!")
-        audio_tecla.volume = 0.3;
+        audio_tecla.volume = volume_geral * volume_efeitos;
         audio_tecla.play();
         await sleep(500);
         container_intro.classList.replace("container_intro_animation", "container_intro_animation2");
@@ -172,19 +224,18 @@ async function renderiza_menu() {
 
 function audio_hover_funcao() {
     audio_hover.currentTime = 0;
-    audio_hover.volume = 0.3;
+    audio_hover.volume = volume_geral * volume_efeitos;
     audio_hover.play();
 }
 
 function audio_hover_reverso_funcao() {
     audio_hover_reverso.currentTime = 0;
-    audio_hover_reverso.volume = 0.3;
+    audio_hover_reverso.volume = volume_geral * volume_efeitos;
     audio_hover_reverso.play();
 }
 
 const mouse_central_menu = document.getElementById("imagem_centro_menu1");
 function anima_opcao1() {
-    audio_hover_funcao();
     mouse_central_menu.style.animation = "animacao_mouse 10s linear infinite";
 }
 
@@ -195,7 +246,6 @@ function desanima_opcao1() {
 
 const engrenagem_central_menu = document.getElementById("imagem_centro_menu2");
 function anima_opcao2() {
-    audio_hover_funcao();
     engrenagem_central_menu.style.animation = "rotacao linear infinite 1s";
 }
 
@@ -206,7 +256,6 @@ function desanima_opcao2() {
 const ajuda_central_menu = document.getElementById("imagem_centro_menu3");
 const ajuda_central_menu2 = document.getElementById("imagem_centro_menu3_2");
 function anima_opcao3() {
-    audio_hover_funcao();
     ajuda_central_menu.style.animation = "anima_ajuda 1s infinite ease-out";
     ajuda_central_menu2.style.animation = "anima_ajuda 1s infinite ease-out";
 }
@@ -218,7 +267,6 @@ function desanima_opcao3() {
 
 const sobre_central_menu = document.getElementById("imagem_centro_menu4");
 function anima_opcao4() {
-    audio_hover_funcao();
     sobre_central_menu.style.animation = "anima_ajuda 1s infinite ease-out";
 }
 
@@ -248,13 +296,13 @@ const container_transicao_jogar = document.getElementById("container_transicao_j
 const faixas_transicao_jogar = document.querySelectorAll("#faixa1, #faixa2, #faixa3, #faixa4");
 
 function audio_opcao1_funcao() {
-    audio_opcao1.volume = 0.3;
+    audio_opcao1.volume = volume_geral * volume_efeitos;
     audio_opcao1.currentTime = 0;
     audio_opcao1.play();
 }
 
 function audio_seleciona_classico() {
-    audio_classico.volume = 0.3;
+    audio_classico.volume = volume_geral * volume_efeitos;
     audio_classico.currentTime = 0;
     audio_classico.play();
 }
@@ -268,6 +316,30 @@ async function chama_modo_jogo() {
         console.log("EM MODOS DE JOGO!");
         container_transicao_jogar.style.display = "flex";
         container_transicao_jogar.style.zIndex = "2";
+
+			for (let i = 0; i < faixas_transicao_jogar.length; i++) {
+            	switch (i) {
+                	case 0:
+                    	faixas_transicao_jogar[0].style.backgroundColor = "#0687ff";
+                    	faixas_transicao_jogar[0].style.boxShadow = "0 0 1vh #0687ff";
+                    break;
+
+                	case 1:
+                    	faixas_transicao_jogar[1].style.backgroundColor = "#004ab9";
+                    	faixas_transicao_jogar[1].style.boxShadow = "0 0 1vh #004ab9";
+                    break;
+
+                	case 2:
+                    	faixas_transicao_jogar[2].style.backgroundColor = "#002f58";
+                    	faixas_transicao_jogar[2].style.boxShadow = "0 0 1vh #002f58";
+                    break;
+
+                	case 3:
+                    	faixas_transicao_jogar[3].style.backgroundColor = "#00213d";
+                    	faixas_transicao_jogar[3].style.boxShadow = "0 0 1vh #00213d";
+                    break;
+           		 }
+       		 }
 
         for (let i = 0; i < faixas_transicao_jogar.length; i++) {
             faixas_transicao_jogar[i].classList.add(`faixa${i + 1}_animacao`);
@@ -482,7 +554,7 @@ function seta_dificuldade_pratica(escolha) {
     }
 }
 
-function seta_dificuldade(escolha, modo) {
+function seta_dificuldade(escolha) {
     const dificuldade_caixa1 = document.getElementById("dificuldade_caixa1");
     const elementos_dificuldade_caixa1 = dificuldade_caixa1.querySelectorAll('*');
 
@@ -613,7 +685,7 @@ let em_contagem = false;
 
 function audio_botao_jogar_func() {
     audio_botao_jogar.currentTime = 0;
-    audio_botao_jogar.volume = 0.3;
+    audio_botao_jogar.volume = volume_geral * volume_efeitos;
     audio_botao_jogar.play();
 }
 
@@ -756,19 +828,19 @@ function audio_dificuldade(dificuldade) {
     switch (dificuldade) {
         case 1:
             audio_dificuldade1.currentTime = 0;
-            audio_dificuldade1.volume = 0.3;
+            audio_dificuldade1.volume = volume_geral * volume_efeitos;
             audio_dificuldade1.play();
             break;
 
         case 2:
             audio_dificuldade2.currentTime = 0;
-            audio_dificuldade2.volume = 0.3;
+            audio_dificuldade2.volume = volume_geral * volume_efeitos;
             audio_dificuldade2.play();
             break;
 
         case 3:
             audio_dificuldade3.currentTime = 0;
-            audio_dificuldade3.volume = 0.3;
+            audio_dificuldade3.volume = volume_geral * volume_efeitos;
             audio_dificuldade3.play();
             break;
     }
@@ -786,7 +858,7 @@ async function renderiza_jogo() {
 
 function contagem_audio() {
     audio_contagem.currentTime = 0;
-    audio_contagem.volume = 0.3;
+    audio_contagem.volume = volume_geral * volume_efeitos;
     audio_contagem.play();
 }
 
@@ -1304,7 +1376,7 @@ async function streak_desce() {
     streak = 1.0;
     streak_jogo.textContent = streak.toFixed(1) + "X";
 
-    audioStreak.volume = 0.5;
+    audioStreak.volume = volume_geral * volume_efeitos;
     audioStreak.pause();
     audioStreak.currentTime = 0;
     audioStreak.play();
@@ -1357,7 +1429,7 @@ function audio_streak_menor(streak) {
         if (j == streak.toString().charAt(2)) {
             let caminhoAudio = `./AUDIO/SFX_COMBO/${1}.${j}x.mp3`;
             let audio = new Audio(caminhoAudio);
-            audio.volume = 0.5;
+            audio.volume = volume_geral * volume_efeitos;
             audio.play();
             break;
         }
@@ -1365,7 +1437,7 @@ function audio_streak_menor(streak) {
 		else if (streak.toString().charAt(2) == 0){
             let caminhoAudio = `./AUDIO/SFX_COMBO/2.1x.mp3`;
             let audio = new Audio(caminhoAudio);
-            audio.volume = 0.5;
+            audio.volume = volume_geral * volume_efeitos;
             audio.play();
             break;
         }
@@ -1378,7 +1450,7 @@ function audio_streak_maior(streak) {
         if (j == streak.toString().charAt(2)) {
             let caminhoAudio = `./AUDIO/SFX_COMBO/${6}.${j}x.mp3`;
             let audio = new Audio(caminhoAudio);
-            audio.volume = 0.5;
+            audio.volume = volume_geral * volume_efeitos;
             audio.play();
             break;
         }
@@ -1386,7 +1458,7 @@ function audio_streak_maior(streak) {
         else {
             let caminhoAudio = `./AUDIO/SFX_COMBO/7.1x.mp3`;
             let audio = new Audio(caminhoAudio);
-            audio.volume = 0.5;
+            audio.volume = volume_geral * volume_efeitos;
             audio.play();
             break;
         }
@@ -1396,7 +1468,7 @@ function audio_streak_maior(streak) {
 function audio_streak_10X() {
     let caminhoAudio = `./AUDIO/SFX_COMBO/10X.mp3`;
     let audio = new Audio(caminhoAudio);
-    audio.volume = 0.5;
+    audio.volume = volume_geral * volume_efeitos;
     audio.pause();
     audio.currentTime = 0;
     audio.play();
@@ -1501,7 +1573,7 @@ async function renderiza_pratica() {
     if (!em_modo_pratica) {
         em_modo_jogo = false;
         em_modo_pratica = true;
-
+		audio_seleciona_classico();
         container_transicao_jogar.style.display = "flex";
         container_transicao_jogar.style.zIndex = "2";
         container_modos_de_jogo.classList.replace("container_modos_de_jogo_pos", "container_modos_de_jogo_animacao2");
@@ -1599,3 +1671,89 @@ async function voltar4() {
 }
 
 // -------------------------------- MODO PRÁTICA ----------------------------------
+
+// ----------------------------------- OPÇÕES -------------------------------------  
+	const tela_opcao = document.getElementById("tela_opcoes");
+	let em_opcoes = false;
+
+ async function chama_opcao() {
+		if (em_menu) {
+			em_menu = false;
+			em_opcoes = true;
+			audio_opcoes.volume = volume_geral * volume_efeitos;
+			audio_opcoes.play();
+
+			menu_tela.classList.replace("container_menu_animation", "container_menu_pos");
+        	container_transicao_jogar.style.display = "flex";
+        	container_transicao_jogar.style.zIndex = "2";
+			
+			for (let i = 0; i < faixas_transicao_jogar.length; i++) {
+            	switch (i) {
+                	case 0:
+                    	faixas_transicao_jogar[0].style.backgroundColor = "#e01e37";
+                    	faixas_transicao_jogar[0].style.boxShadow = "0 0 1vh #e01e37";
+                    break;
+
+                	case 1:
+                    	faixas_transicao_jogar[1].style.backgroundColor = "#c71f37";
+                    	faixas_transicao_jogar[1].style.boxShadow = "0 0 1vh #c71f37";
+                    break;
+
+                	case 2:
+                    	faixas_transicao_jogar[2].style.backgroundColor = "#b21e35";
+                    	faixas_transicao_jogar[2].style.boxShadow = "0 0 1vh #b21e35";
+                    break;
+
+                	case 3:
+                    	faixas_transicao_jogar[3].style.backgroundColor = "#85182a";
+                    	faixas_transicao_jogar[3].style.boxShadow = "0 0 1vh #85182a";
+                    break;
+           		 }
+       		 }
+
+        	for (let i = 0; i < faixas_transicao_jogar.length; i++) {
+            	faixas_transicao_jogar[i].classList.add(`faixa${i + 1}_animacao`);
+        	}
+
+        	await sleep(1500);
+			tela_opcao.style.display = "block";
+			tela_opcao.style.zIndex = 1;
+        	tela_opcao.style.animation = "opacidade_display 1s forwards ease-in";
+        	
+			await sleep(800);
+        	container_transicao_jogar.style.display = "none";
+		}
+	}
+
+	async function voltar5() {
+		
+    if (em_opcoes) {
+        	em_opcoes = false;
+        	em_menu = true;
+
+        	container_transicao_jogar.style.display = "flex";
+        	container_transicao_jogar.style.zIndex = "2";
+
+			
+
+        	for (let i = 0; i < faixas_transicao_jogar.length; i++) {
+           		faixas_transicao_jogar[i].classList.add(`faixa${i + 1}_animacao`);
+        	}
+
+        	tela_opcao.style.animation = "opacidade_sem_display 1s forwards ease-in";
+        	tela_opcao.zIndex = 0;
+    		await sleep(1000);
+
+    		tela_opcao.style.display = "none";
+			menu_tela.classList.replace("container_menu_pos", "container_menu_animation");
+			menu_tela.style.zIndex = 1;
+			renderiza_menu();
+    		await sleep(1500);
+    		container_transicao_jogar.style.display = "none";
+    		for (let i = 0; i < faixas_transicao_jogar.length; i++) {
+        		faixas_transicao_jogar[i].classList.replace(`faixa${i + 1}_animacao`, "faixas");
+    		}
+
+    	}
+	}
+// ----------------------------------- OPÇÕES -------------------------------------  
