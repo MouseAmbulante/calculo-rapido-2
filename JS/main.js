@@ -46,6 +46,9 @@ let dificuldade = 1;
 	const audio_opcoes = new Audio();
 	audio_opcoes.src = "./AUDIO/GERAL/seleciona_opcoes.mp3";
 
+	const audio_select_ajuda = new Audio();
+	audio_select_ajuda.src = "./AUDIO/GERAL/seleciona_ajuda.mp3";
+
 	const audio10X = new Audio();
 	const audio1X = new Audio();
 	const audio_ajuda = new Audio();
@@ -1756,4 +1759,116 @@ async function voltar4() {
 
     	}
 	}
-// ----------------------------------- OPÇÕES -------------------------------------  
+// ----------------------------------- OPÇÕES -------------------------------------
+
+// ----------------------------------- AJUDA --------------------------------------
+
+const container_guia = document.getElementById("container_guia");
+const container_pagina = document.getElementById("container_pagina");
+const on_off_luz = document.getElementById("on_off_luz");
+const tela_ajuda = document.getElementById("tela_ajuda");
+const pagina_monitor = document.getElementById("pagina");
+let ligado = true;
+let em_ajuda = false;
+
+
+async function chama_ajuda() {
+		if (em_menu) {
+			em_menu = false;
+			em_ajuda = true;
+
+			// Colocar Áudio de Click
+			audio_select_ajuda.volume = volume_geral * volume_efeitos;
+			audio_select_ajuda.play();
+
+			menu_tela.classList.replace("container_menu_animation", "container_menu_pos");
+        	container_transicao_jogar.style.display = "flex";
+        	container_transicao_jogar.style.zIndex = "2";
+			
+			for (let i = 0; i < faixas_transicao_jogar.length; i++) {
+            	switch (i) {
+                	case 0:
+                    	faixas_transicao_jogar[0].style.backgroundColor = "#ffea00";
+                    	faixas_transicao_jogar[0].style.boxShadow = "0 0 1vh #ffea00";
+                    break;
+
+                	case 1:
+                    	faixas_transicao_jogar[1].style.backgroundColor = "#ffb700";
+                    	faixas_transicao_jogar[1].style.boxShadow = "0 0 1vh #ffb700";
+                    break;
+
+                	case 2:
+                    	faixas_transicao_jogar[2].style.backgroundColor = "#ffa200";
+                    	faixas_transicao_jogar[2].style.boxShadow = "0 0 1vh #ffa200";
+                    break;
+
+                	case 3:
+                    	faixas_transicao_jogar[3].style.backgroundColor = "#ff9500";
+                    	faixas_transicao_jogar[3].style.boxShadow = "0 0 1vh #ff9500";
+                    break;
+           		 }
+       		 }
+
+        	for (let i = 0; i < faixas_transicao_jogar.length; i++) {
+            	faixas_transicao_jogar[i].classList.add(`faixa${i + 1}_animacao`);
+        	}
+
+        	await sleep(1500);
+			tela_ajuda.style.display = "flex";
+			tela_ajuda.style.flexDirection = "column";
+			tela_ajuda.style.zIndex = 1;
+        	tela_ajuda.style.animation = "opacidade_display 1s forwards ease-in";
+        	
+			await sleep(800);
+        	container_transicao_jogar.style.display = "none";
+			container_transicao_jogar.style.zIndex = 0;
+		}
+	}
+
+
+function io_monitor() {
+	if (ligado) {
+		ligado = false;
+		container_guia.style.opacity = 0;
+		container_pagina.style.opacity = 0;
+		on_off_luz.style.boxShadow = "0vh 0vh 0vh, 0vh 0vh 0vh";
+		on_off_luz.style.backgroundColor = "#0a0a0a"
+		pagina_monitor.style.overflow = "hidden";
+	} else {
+		ligado = true;
+		container_guia.style.opacity = 1;
+		container_pagina.style.opacity = 1;
+		on_off_luz.style.boxShadow = "0 0 .3vh #89ff03, 0 0 .6vh #6fff03";
+		on_off_luz.style.backgroundColor = "#89ff03"
+		pagina_monitor.style.overflow = "auto";
+	}
+}
+
+async function voltar6() {
+		
+    if (em_ajuda) {
+        	em_ajuda = false;
+        	em_menu = true;
+        	container_transicao_jogar.style.display = "flex";
+        	container_transicao_jogar.style.zIndex = "2";
+
+        	for (let i = 0; i < faixas_transicao_jogar.length; i++) {
+           		faixas_transicao_jogar[i].classList.add(`faixa${i + 1}_animacao`);
+        	}
+
+        	tela_ajuda.style.animation = "opacidade_sem_display 1s forwards ease-in";
+        	tela_ajuda.zIndex = 0;
+    		await sleep(1000);
+
+    		tela_ajuda.style.display = "none";
+			menu_tela.classList.replace("container_menu_pos", "container_menu_animation");
+			menu_tela.style.zIndex = 1;
+			renderiza_menu();
+    		await sleep(1500);
+    		container_transicao_jogar.style.display = "none";
+    		for (let i = 0; i < faixas_transicao_jogar.length; i++) {
+        		faixas_transicao_jogar[i].classList.replace(`faixa${i + 1}_animacao`, "faixas");
+    		}
+    	}
+	}
+// ----------------------------------- AJUDA --------------------------------------

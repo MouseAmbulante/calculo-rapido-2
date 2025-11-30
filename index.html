@@ -632,7 +632,7 @@
                 </div>
                 <p class="texto_simples" id="texto_opcao2_2">CÁLCULO RÁPIDO</p>
             </div>
-            <div class="opcoes" id="opcao_jogar3" onmouseover="anima_opcao3()" onmouseout="desanima_opcao3()"
+            <div class="opcoes" id="opcao_jogar3" onclick="chama_ajuda()"  onmouseover="anima_opcao3()" onmouseout="desanima_opcao3()"
 				onmouseenter="audio_hover_funcao()">
                 <p class="texto_simples" id="texto_opcao3">CÁLCULO RÁPIDO</p>
                 <div class="organiza_icones_menu">
@@ -678,9 +678,397 @@
             </div>
         </div>
         <!-- OPÇÕES DO MENU -->
-
     </div>
     <!-- MENU -->
+
+    <!-- AJUDA JANELA -->
+		<!-- Header Ajuda  -->
+        <div id="tela_ajuda" class="tela_comum">
+		<div class="linha_etiqueta" id="linha_ajuda">
+            <div class="header_janela" id="voltar_header">
+                <div class="voltar_btn" onclick="voltar6(), audio_hover_reverso_funcao()" onmouseenter="audio_hover_funcao()">
+                    <img src="IMG/ícones_menu/voltar_icone.png" alt="voltar_icone" id="voltar_icone">
+                    <p class="texto_simples" id="voltar_texto">VOLTAR</p>
+                </div>
+            </div>
+            <div class="header_janela" id="classico_header">
+                <img src="IMG/ícones_menu/logo_sem_neon.png" alt="" id="logo_menu">
+                <p class="texto_simples" id="texto_logo_menu">AJUDA</p>
+            </div>
+            <div class="header_janela" id="conta_header">
+                <div class="conta">
+                    <!-- <div id="imagem_conta"></div> -->
+                    <p class="texto_simples" id="username"></p>
+                </div>
+            </div>
+		</div>
+		<!-- Header Ajuda -->
+
+		<!-- Body Ajuda -->
+		<div class="container_monitor">
+			<div class="monitor">
+				<div class="container_guias" id="container_guia">
+					<div class="guia_ativa">
+						<div class="guia_texto">
+							<img src="IMG/ícones_menu/logo_sem_neon.png" class="logo_monitor" alt="">
+							<p class="texto_simples_guia">Cálculo Rápido - Guia</p>
+						</div>
+						<div class="guia_icone_fecha">
+							<img id="fecha_guia" src="IMG/imagens_ajuda/fechar_guia.png">
+						</div>
+					</div>
+				</div>
+
+				<div class="container_pagina" id="container_pagina">
+					<div class="pagina" id="pagina">
+						<div class="header_pagina">
+							<img src="IMG/ícones_menu/logo.png" width="6%" style="margin-left: .5%;"  alt="">
+							<p class="header_pagina_texto">CÁLCULO RÁPIDO - GUIA</p>
+						</div>
+						<div class="body_pagina">
+							<div class="titulo_introducao">
+								<p class="titulo_jogo">O GUIA DO CÁLCULO RÁPIDO</p>
+								<p class="texto_simples_guia" id="descricao_introducao" style="cursor: initial;">O que é, como jogar cálculo rápido, como fazer as contas e utilizar as mecânicas do jogo.</p>
+							</div>
+							<div class="sessao">
+								<div class="header_sessao">
+									<h1 class="header_sessao_texto" id="">O que é o Cálculo Rápido?</h1>
+								</div>
+								<div class="body_sessao">
+									<p class="body_sessao_texto">Cálculo Rápido é um jogo de matemática altamente inspirado em outros 
+									jogos web como o <a href="https://tetr.io" target="_blank" style="color: #1194FF;">tetr.io</a>, e 
+									seu objetivo é tornar a realização de operações matemáticas simples mais divertida.</p>
+									<br>
+									
+									<p class="body_sessao_texto">Antes de começar a calcular, o jogo disponibiliza um menu que você
+									utilizou para estar nesta sessão:</p>
+									<div class="centraliza_imagens_monitor">
+										<img src="IMG/imagens_ajuda/tela_menu.png" class="imagem_sessao"  alt="">
+									</div>
+								</div>
+							</div>
+							<div class="sessao" id="sessao_navegacao">
+								<div class="header_sessao">
+									<h1 class="header_sessao_texto" id="">Navegando Pelo Jogo</h1>
+								</div>
+								<div class="body_sessao">
+									<p class="body_sessao_texto">Ao clicar em jogar, a tela de seleção 
+									de modo aparece:</p>
+									<br>
+									<img src="IMG/imagens_ajuda/tela_modos_de_jogo.png" class="imagem_sessao" style="float: right; margin-left: 2%;" alt=""><p class="body_sessao_texto" style="margin-top: 3%;">Nessa tela estão os dois modos de jogo do cálculo rápido, sendo eles os 
+									modos:
+									<div class="organiza_textos_monitor">
+										<p class="body_sessao_texto">|</p>
+										<p id="modo_classico_p" class="texto_opcoes" style="font-size: 2.5vh;">|CLÁSSICO|</p> 
+										<p class="body_sessao_texto">| e |</p> <p class="texto_opcoes" id="modo_livre_p" 
+										style="font-size: 2.5vh;">|PRÁTICA|</p> <p class="body_sessao_texto">|.</p>
+									</div>
+										<br>
+										<p class="body_sessao_texto">O modo clássico te dará cálculos aleatórios para responder em 
+										um período de tempo selecionado, enquanto o modo prática retira o limite de tempo para praticar
+										mais livremente.</p>
+								</div>
+							</div>
+
+							<div class="sessao">
+								<div class="header_sessao">
+									<h1 class="header_sessao_texto" id="">O Pré-jogo</h1>
+								</div>
+								<div class="body_sessao">
+									<p class="body_sessao_texto" align="center">Essa é a última tela antes de começar a jogar em ambos os modos:</p>
+									<div class="centraliza_imagens_monitor">
+										<img src="IMG/imagens_ajuda/tela_classico.png" class="imagem_sessao2"  alt="">
+										<img src="IMG/imagens_ajuda/tela_pratica.png" class="imagem_sessao2"  alt="">
+									</div>
+									<p class="body_sessao_texto">Tanto no modo clássico como no prática, podemos encontrar as 
+									dificuldades. Elas são responsáveis por alterarem aspectos importantes da partida, como o 
+									tempo, aleatoriedade dos números, e quantidade de pontos por acerto.</p>
+									<br>
+									<p class="body_sessao_texto">Vamos ver o que muda em cada dificuldade: </p>
+									<div class="centraliza_imagens_monitor">
+										<table>
+											<tr class="monitor_tr">
+												<th class="monitor_th"><p class="body_sessao_texto">DIFICULDADE</p></th>
+												<th class="monitor_th"><p class="body_sessao_texto">NÚMEROS POSSÍVEIS</p></th>
+												<th class="monitor_th"><p class="body_sessao_texto">MULTIPLICADOR</p></th>
+												<th class="monitor_th"><p class="body_sessao_texto">TEMPO</p></th>
+											</tr>
+											<tr class="monitor_tr">
+												<td><p class="descricao_iniciante">INICIANTE</p></td>
+												<td><p class="descricao_iniciante">0-20</p></td>
+												<td><p class="descricao_iniciante">1X</p></td>
+												<td><p class="descricao_iniciante">5 MINUTOS</p></td>
+											</tr>
+											<tr class="monitor_tr">
+												<td><p class="descricao_intermediaria">INTERMEDIÁRIO</p></td>
+												<td><p class="descricao_intermediaria">0-40</p></td>
+												<td><p class="descricao_intermediaria">5X</p></td>
+												<td><p class="descricao_intermediaria">4 MINUTOS</p></td>
+											</tr>
+											<tr class="monitor_tr">
+												<td><p class="descricao_avancado">AVANÇADO</p></td>
+												<td><p class="descricao_avancado">0-60</p></td>
+												<td><p class="descricao_avancado">10X</p></td>
+												<td><p class="descricao_avancado">3 MINUTOS</p></td>
+											</tr>
+										</table>
+									</div>
+									<br>
+									<p class="body_sessao_texto">Além das dificuldades, nessa mesma tela podemos
+									encontrar os dados da nossa última partida, como os pontos, precisão, 
+									combo e recorde.</p>
+									<br>
+									<p class="body_sessao_texto" style="font-weight: bold;">OBSERVAÇÃO:</p>
+									<p class="body_sessao_texto">O "Combo" será explicado
+									na sessão de mecânicas do jogo mais à frente.</p>
+								</div>
+							</div>
+							<div class="sessao">
+								<div class="header_sessao">
+									<h1 class="header_sessao_texto" id="">O Jogo e as Operações Matemáticas</h1>
+								</div>
+								<div class="body_sessao">
+									<p class="body_sessao_texto">Após pressionar o botão de jogar e passar pela contagem 
+									regressiva, o jogo começa de verdade.</p>
+									<div class="centraliza_imagens_monitor">
+										<img src="IMG/imagens_ajuda/captura.png" class="imagem_sessao"  alt="Captura do Jogo">
+									</div>
+									<p class="body_sessao_texto">Ao iniciar a partida, você recebe uma operação para resolver, basta
+									já ir escrevendo sua resposta e pressionar a tecla Enviar (Enter). Acima
+									da conta está o temporizador que mostra quanto tempo falta para terminar a partida no modo
+									clássico, e caso o modo seja o prática, ele mostra o tempo de duração da partida. Caso queira
+									resetar a partida pressione R, e para sair pressione ESC.</p>
+									<br>
+									<p class="body_sessao_texto">As operações matemáticas encontradas no jogo são a Adição (+), 
+									Subtração (-), Multiplicação (X), e Divisão (:) de dois números totalmente aleatórios.
+									Os resultados também podem ser negativos, então cuidado ao responder.</p>
+									<br>
+									<p class="body_sessao_texto">Vamos ver como resolver essas operações da forma correta:</p>
+									<br>
+									<p class="body_sessao_texto"><b>Adição - </b>É quando juntamos elementos como por exemplo, os
+									números: 1 + 3, 5 + 9, 10 + 10, entre outros.</p>
+									<br>
+									<p class="body_sessao_texto">A forma mais comum de imaginar uma conta de dois números, é pensar
+									de forma horizontal, por exemplo, 1 + 1 = 2. Entretanto, para contas com mais de 1 digito no 
+									número, como 10 + 20, ou 13 + 17 por exemplo, é mais fácil utilizar o método vertical.</p>
+									<br>
+									<p class="body_sessao_texto">Veja os exemplos abaixo:</p>
+									<div class="centraliza_imagens_monitor">
+										<img src="IMG/imagens_ajuda/conta_exemplo.png" class="imagem_sessao"  alt="Captura do Jogo">
+									</div>
+									<p class="body_sessao_texto">Caso ainda não esteja claro, imagine que você tem um palito, e então, 
+									ganha de presente mais dois palitos, ficando com um total de 3 elementos.</p>
+									<p class="body_sessao_texto">Exemplo: I Palito + II Palitos  é igual à III Palitos.</p>
+									<br>
+									<p class="body_sessao_texto">No segundo exemplo, encontramos a conta 3 + 7 = 10, onde o 
+									0 do resultado vai abaixo do 7, e o 1 do resultado à esquerda do 0.</p>
+									<br>
+									<p class="body_sessao_texto">Vamos ver um exemplo com números de dois digitos:</p>
+									<div class="centraliza_imagens_monitor">
+										<img src="IMG/imagens_ajuda/conta_exemplo2.png" class="imagem_sessao"  alt="Captura do Jogo">
+									</div>
+									<p class="body_sessao_texto">Este exemplo é um pouco mais complicado, mas vamos começar a conta 
+									11 + 19 com os números vermelhos, somando 1 + 9 encontramos 10, entretanto, pelo fato da operação
+									possuir números de dois digitos, seguimos o procedimento da figura acima e enviamos o 1 do 10 para o 1 do 11, e o zero enviamos
+									para baixo do 9. Depois somamos o 1 do "11" com o 1 do "19" e com o 1 circulado na imagem 
+									(1 + 1 + 1), ficando 3, logo, o resultado de 11 + 19 = 30.</p>
+									<br>
+									<p class="body_sessao_texto"><b>Subtração - </b>É quando tiramos elementos de outros, como 
+									10 - 5, Para dividirmos o
+									número dez em duas partes,3 - 2, 1 - 1, etc.</p>
+									<br>
+									<p class="body_sessao_texto">Assim como a adição, o melhor método para subtração é o vertical.</p>
+									<div class="centraliza_imagens_monitor">
+										<img src="IMG/imagens_ajuda/conta_exemplo3.png" class="imagem_sessao"  alt="Captura do Jogo">
+									</div>
+									<p class="body_sessao_texto">O processo é bem simples, porém, há uma regra importante para 
+									fazer subtração que é aplicada quando o número de baixo é maior do que o de cima.</p>
+									<br>
+									<p class="body_sessao_texto">Aqui está um exemplo:</p>
+									<div class="centraliza_imagens_monitor">
+										<img src="IMG/imagens_ajuda/conta_exemplo4.png" class="imagem_sessao"  alt="Captura do Jogo">
+									</div>
+									<p class="body_sessao_texto">A conta é 32 - 26, e sempre começamos pelo lado direito. Ao analisar
+									os números, temos em cima o 2, e abaixo o número 6 que é maior do que 2. Quando isso acontece, 
+									devemos tirar 1 do próximo número de cima, nesse caso o 3. Tirando 1 dele, o 3 vira 2, e este
+									1 retirado do "3" se funde com o 2, virando 12. Agora a conta fica 12 - 6 = 6, e 2 - 2 = 0. Resultado final é
+									igual à 6.</p>
+									<br>
+									<p class="body_sessao_texto">Haverá contas durante a partida como:</p>
+									<p class="body_sessao_texto"><b>4 - 8, 3 - 5, 7 - 12, entre outras.</b></p>
+									<p class="body_sessao_texto">Para 4 - 8, basta imaginar a ordem contrária,  8 - 4, que o resultado
+									é o mesmo, só que negativo.</p>
+									<br>
+									<p class="body_sessao_texto"><b>8 - 4 = 4</b></p>
+									<p class="body_sessao_texto"><b>4 - 8 = (-4)</b></p>
+									<hr style="margin: 1% 0 1% 0;">
+									<p class="body_sessao_texto"><b>5 - 3 = 2</b></p>
+									<p class="body_sessao_texto"><b>3 - 5 = (-2)</b></p>
+									<hr style="margin: 1% 0 1% 0;">
+									<p class="body_sessao_texto"><b>12 - 7 = 5</b></p>
+									<p class="body_sessao_texto"><b>7 - 12 = (-5)</b></p>
+									<br>
+									<p class="body_sessao_texto" style="font-weight: bold;">OBSERVAÇÃO:</p>
+									<p class="body_sessao_texto">A regra explicada acima funciona para os cálculos de resultado
+									negativo do jogo, mas existem mais regras matemáticas além dessa para 
+									contas entre números negativos!</p>
+									<br>
+									<p class="body_sessao_texto"><b>Multiplicação - </b>É um elemento mais ele mesmo várias vezes, como 
+									2 X 2, 3 X 5, 7 X 3, etc.
+									</p>
+									<div class="centraliza_imagens_monitor">
+										<img src="IMG/imagens_ajuda/conta_exemplo5.png" class="imagem_sessao"  alt="Captura do Jogo">
+									</div>
+									<p class="body_sessao_texto">Na multiplicação, todo número multiplicado por zero é igual zero:
+									</p>
+									<p class="body_sessao_texto"><b>10 X 0 = 0</b></p>
+									<hr style="margin: 1% 0 1% 0;">
+									<p class="body_sessao_texto">E todo número multiplicado por 1 é igual a ele mesmo:</p>
+									<p class="body_sessao_texto"><b>1 X 34 = 34</b></p>
+									<br>
+									<p class="body_sessao_texto">A melhor forma de aprender multiplicação é saber os resultados 
+									das tabuadas de 1 à 10 para resolver qualquer operação desse tipo.</p>
+									<br>
+									<p align="center" class="body_sessao_texto"><b>TABUADA DO 1 AO 10</b></p>
+									<div class="centraliza_imagens_monitor" style="flex-direction: column; text-align: center;">
+										<img src="IMG/imagens_ajuda/tabuada.webp" style="border-radius: 0; width: 80%; box-shadow: 0 0 0 1vh #FFF; margin-top: 2%;" class="imagem_sessao"  alt="Captura do Jogo">
+										<p class="body_sessao_texto" style="font-size: 1.8vh; margin: 1%;">Fonte: https://escolaeducacao.com.br/wp-content/uploads/2020/01/tabuada-de-divisao-vantagens.jpg</p>
+									</div>
+									<br>
+									<p class="body_sessao_texto">Aqui estão alguns exemplos de multiplicação:</p>
+									<div class="centraliza_imagens_monitor">
+										<img src="IMG/imagens_ajuda/conta_exemplo6.png" class="imagem_sessao"  alt="Captura do Jogo">
+									</div>
+									<p class="body_sessao_texto">Assim como na adição, também começamos da direita para esquerda, e
+									quando o resultado é maior que nove, deixamos a unidade do número e subimos a dezena dele. Isso
+									é visto na figura, com o cálculo 18 X 5.</p>
+									<br>
+									<p class="body_sessao_texto">Por fim, um cálculo de dois números de dois digitos:</p>
+									<div class="centraliza_imagens_monitor">
+										<img src="IMG/imagens_ajuda/conta_exemplo7.png" class="imagem_sessao"  alt="Captura do Jogo">
+									</div>
+									<p class="body_sessao_texto">Começamos pelo número em vermelho da direita "2", e multiplicamos pelo 8, virando
+									16, o 6 fica em baixo, e o 1 sobe. Depois multiplicamos o 2 pelo outro 2 e somamos o valor com o 1
+									que subiu, ficando 5. Agora temos o valor 56. Seguindo a estrutura, calculamos o 1 X 8, e o 1 X 2.
+									Por fim, somamos os números 6 com 0, 5 com 8, e 2 com o 1 que veio do 5 + 8, ficando 336 como mostrado na figura.</p>
+									<br>
+									<p class="body_sessao_texto"><b>Divisão - </b>É o cálculo para separar/fracionar quantidades em partes. É necessário saber multiplicação para realizar essas operações.
+									</p>
+									<br>
+									<p class="body_sessao_texto">O primeiro exemplo pode acabar te assustando caso nunca tenha visto,
+									mas não é nada tão difícil.</p>
+									<div class="centraliza_imagens_monitor">
+										<img src="IMG/imagens_ajuda/conta_exemplo8.png" style="width: 80%;" class="imagem_sessao"  alt="Captura do Jogo">
+									</div>
+									<p class="body_sessao_texto">No primeiro cálculo, encontramos 10 dividido por 2. Para dividirmos o
+									número dez em duas partes, precisamos encontrar um número que multiplicado pelo 2, seja igual a 10.
+									É aí que usamos a tabuada do 2 para descobrir que número é esse. Neste caso, o número é o 5, e ele
+									vai abaixo do 2 como quociente (ou resultado).</p>
+									<br>
+									<p class="body_sessao_texto">Já o segundo cálculo é o 134 dividido por 2, que diferente da 
+									conta anterior, não é tão fácil de encontrar o resultado rápido, então aplicaremos algumas 
+									regras para calcular. Sempre procuraremos o número que vezes o divisor (nesse caso o 2), da o 
+									número do dividendo (nesse caso o 134). Começamos da esquerda pra direita, e vemos o 1 de 134 que é
+									menor do que 2, quando o número do dividendo é menor que o divisor, juntaremos ele com o próximo
+									elemento, por exemplo, 1 se junta com o 3, virando 13. Agora que o número é maior que o dividendo,
+									qual valor inteiro multiplicado por 2 da 13? Nenhum. Portanto, procuramos o mais próximo, que é o
+									6, já que 6 X 2 = 12.</p>
+									<br>
+									<p class="body_sessao_texto">Lembre-se de que o valor do quociente deve <b>SEMPRE</b> ser menor 
+									ou igual ao valor do dividendo.</p>
+									<br>
+									<p class="body_sessao_texto">Voltando, colocamos o 6 como quociente, e o 12 para subtrair com o 13.
+									O resultado da subtração deu 1, mas ainda há um número 4 que sobrou do 134, então, descemos ele para
+									juntar com o 1, e virar 14. 14 é um número obtido na tabuada do 2 ao fazer 2 X 7. Assim, adicionamos
+									o 7 no quociente ao lado do 6, e o 14 subtraímos com o resto, ficando zero e encerrando a conta.</p>
+									<br>
+									
+									<p class="body_sessao_texto"><b>OBSERVAÇÃO:</b></p>
+									<p class="body_sessao_texto">O Cálculo Rápido não possui divisões infinitas ou com vírgula, mas isso
+									é muito importante na matemática, então recomendamos que procure conteúdos sobre divisão com vírgula,
+									dízimas periódicas, e divisão de números decimais para ter mais conhecimento sobre.</p>
+								</div>
+							</div>
+							<div class="sessao">
+								<div class="header_sessao">
+									<h1 class="header_sessao_texto" id="">Pontos e Mecânicas do Cálculo Rápido</h1>
+								</div>
+								<div class="body_sessao">
+									<p class="body_sessao_texto">O Cálculo Rápido registra algumas informações sobre sua performance
+									durante a partida, como a sua precisão, número de pontos, recorde de pontos e uma mecânica
+									chamada combo.</p>
+									<br>
+									<p class="body_sessao_texto">Começando com os pontos, o jogador ganha 20 pontos por acerto, e
+									esses pontos mostram a sua habilidade no jogo, pois quanto mais pontos, mais cálculos o jogador
+									acertou. Entretanto, você pode obter mais de 20 pontos por acertos dependendo da dificuldade
+									jogada. Na sessão do pré-jogo, a tabela mostrava um multiplicador de pontos por dificuldade, 
+									ou seja, quanto mais difícil a dificuldade, maior é a quantidade de pontos ganho por acerto. Caso
+									faça mais pontos do que na partida anterior, esse dado será salvo na aba de recorde, mostrando
+									a maior quantidade alcançada por você em uma partida.</p>
+									<div class="centraliza_imagens_monitor">
+										<img src="IMG/imagens_ajuda/pontos_recorde.png" class="imagem_sessao"  alt="Captura do Jogo">
+									</div>
+
+									<br>
+									<p class="body_sessao_texto">Além do recorde e pontos, temos também a precisão, que é autoexplicativa,
+									mas ela é calculada utilizando o número de acertos e dividindo-os pelo número de questões passadas, por fim, esse valor é multiplicado por 100 para se obter uma porcentagem.
+									</p>
+									<br>
+									<p class="body_sessao_texto">Para finalizar, vamos falar sobre o combo. O combo é uma mecânica
+									que possibilita o jogador de obter ainda mais pontos. Este recurso é um número iniciado em 1.0 vezes,
+									e aumenta em 0.1 a cada acerto, mas, caso o jogador erre um cálculo, este combo é resetado para 1.0.
+									A fórmula do ponto com o combo é: </p>
+									<br>
+									<p class="body_sessao_texto"><b>20 X (Multiplicador da Dificuldade) + (Combo X 10)</b></p>
+									<br>
+									<p class="body_sessao_texto">Ou seja, se você possui um combo de 2.0X no iniciante, seus acertos valem 40 pontos porque o multiplicador de dificuldade é 1, o combo 2 vezes 10 é igual à 20, e somando isso com o acerto (que também 
+									vale 20) temos o 40.</p>
+									<div class="centraliza_imagens_monitor">
+										<img src="IMG/imagens_ajuda/combo.png" style="width: 40%" class="imagem_sessao"  alt="Captura do Jogo">
+									</div>
+									<br>
+									<p class="body_sessao_texto"><b>OBSERVAÇÃO:</b></p>
+									<p class="body_sessao_texto">O combo máximo é 10X.</p>
+								</div>
+							</div>
+							<div class="sessao" style="padding-bottom: 5%;">
+								<div class="header_sessao">
+									<h1 class="header_sessao_texto" id="">Extra</h1>
+								</div>
+								<div class="body_sessao">
+									<p class="body_sessao_texto">
+										Se precisar diminuir ou aumentar o som de efeitos, ajuda ou volume geral do jogo, basta ir nas
+										opções:
+									</p>
+									<div class="centraliza_imagens_monitor">
+										<img src="IMG/imagens_ajuda/opcoes.png"  class="imagem_sessao"  alt="Captura do Jogo">
+									</div>
+									<p class="body_sessao_texto">Agora você tem tudo o que é preciso para começar a realizar
+									cálculos matemáticos aqui! Caso não esteja confiante o suficiente, tente o modo prática, pois
+									ele não tem limite de tempo e pode ser jogado em qualquer dificuldade. Esperamos que você se divirta
+									bastante!</p>
+									<br>
+									<p class="header_sessao_texto" align="center" style="font-weight: bold;">Aproveite!</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				
+				<div class="container_painel">
+					<img id="monitor_power" src="IMG/imagens_ajuda/monitor_power.png" width="4%" alt="" onclick="io_monitor()">
+					<div id="on_off_luz"></div>
+				</div>
+			</div>
+		</div>
+		<div class="container_suporte_monitor">
+			<div class="suporte_monitor"></div>
+		</div>
+		<!-- Body Ajuda -->
+		
+		</div>
+	<!-- AJUDA TELA -->
 
 
     <!-- OPÇÕES/CONFIGURAÇÕES -->
@@ -758,6 +1146,8 @@
 			</div>
 		</div>
 	<!-- OPÇÕES/CONFIGURAÇÕES -->
+
+
 
     <script src="JS/main.js"></script>
 </body>
