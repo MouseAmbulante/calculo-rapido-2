@@ -1165,6 +1165,7 @@ body {
     margin-right: 0%;
     /* animation: anima_opcoes .7s cubic-bezier(.58,1.54,.61,.79) forwards; */    
     animation-delay: 0.2s;
+	filter: grayscale(100%);
 }
 
 #opcao_jogar4:hover {   
@@ -2163,6 +2164,29 @@ body {
 .temporizador_texto {
     font-size: 2.7vh;
     color: #FFF;
+}
+
+.dica_container {
+	width: 100%;
+	height: 10vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#dica {
+    color: #FFF;
+    padding: 2%;
+	font-family: Montserrat;
+    font-size: 3vh;
+    text-shadow: 0 0 1vh #FFF;
+    font-weight: bold;
+	margin-bottom: -7%;
+	background-color: #000000C4;
+	backdrop-filter: blur(1vh);
+	border-radius: 2vh;
+	border: solid #000000C4 .3vh;
+	box-shadow: 0 1vh 2vh #000;
 }
 
 .temporizador_texto2, #temporizador_texto, #numero1_jogo, #sinal_jogo, #numero2_jogo  {

@@ -10,7 +10,7 @@
 </head>
 
 <body id="body">
-    <button id="botao_intro">Jogar</button>
+    <button style="width: 10%; height: 5vh;" id="botao_intro">Jogar</button>
 
     <!-- CRÉDITOS -->
     <div class="intro" id="intro">
@@ -427,6 +427,7 @@
 
             <!-- TELA DE CÁLCULO -->
             <div class="meio_jogo" id="container_principal_jogo">
+				<div class="dica_container"></div>
                 <div class="temporizador_jogo">
                     <div class="temporizador_header">
                         <p class="temporizador_texto">T E M P O R I Z A D O R</p>
@@ -459,6 +460,9 @@
                         <input type="submit" id="envia_resposta_botao" value="ENVIAR!">
                     </form>
                 </div>
+				<div class="dica_container">
+					<p class="temporizador_texto" id="dica">R = Reiniciar | ESC = Sair</p>
+				</div>
             </div>
             <!-- TELA DE CÁLCULO -->
 
@@ -656,7 +660,7 @@
                 </div>
                 <p class="texto_simples" id="texto_opcao3_2">CÁLCULO RÁPIDO</p>
             </div>
-            <div class="opcoes" id="opcao_jogar4" onmouseover="anima_opcao4()" onmouseout="desanima_opcao4()"
+            <div class="opcoes" id="opcao_jogar4" onclick="alert('ESTA PÁGINA ESTÁ SENDO DESENVOLVIDA!')"  onmouseover="anima_opcao4()" onmouseout="desanima_opcao4()"
 				onmouseenter="audio_hover_funcao()">
                 <p class="texto_simples" id="texto_opcao4">CÁLCULO RÁPIDO</p>
                 <div class="organiza_icones_menu">

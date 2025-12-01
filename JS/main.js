@@ -824,7 +824,7 @@ seleciona_background();
 
 function seleciona_background() {
     // numero_aleatorio = Math.floor(Math.random() * 10);
-    tela_jogo.style.backgroundImage = `url(IMG/jogo/background0.jpg)`;
+    tela_jogo.style.backgroundImage = `url(IMG/jogo/background4.jpg)`;
 }
 
 function audio_dificuldade(dificuldade) {
@@ -1721,7 +1721,7 @@ async function voltar4() {
         	await sleep(1500);
 			tela_opcao.style.display = "block";
 			tela_opcao.style.zIndex = 1;
-        	tela_opcao.style.animation = "opacidade_display 1s forwards ease-in";
+        	tela_opcao.style.animation = "opacidade_display 1s forwards ease-in, bg_opcoes_animation 10s ease-in-out alternate-reverse infinite";
         	
 			await sleep(800);
         	container_transicao_jogar.style.display = "none";
@@ -1743,7 +1743,7 @@ async function voltar4() {
            		faixas_transicao_jogar[i].classList.add(`faixa${i + 1}_animacao`);
         	}
 
-        	tela_opcao.style.animation = "opacidade_sem_display 1s forwards ease-in";
+        	tela_opcao.style.animation = "opacidade_sem_display 1s forwards ease-in, bg_opcoes_animation 10s ease-in-out alternate-reverse infinite";
         	tela_opcao.zIndex = 0;
     		await sleep(1000);
 
@@ -1817,7 +1817,7 @@ async function chama_ajuda() {
 			tela_ajuda.style.display = "flex";
 			tela_ajuda.style.flexDirection = "column";
 			tela_ajuda.style.zIndex = 1;
-        	tela_ajuda.style.animation = "opacidade_display 1s forwards ease-in";
+        	tela_ajuda.style.animation = "opacidade_display 1s forwards ease-in, bg_opcoes_animation 10s ease-in-out alternate-reverse infinite";
         	
 			await sleep(800);
         	container_transicao_jogar.style.display = "none";
@@ -1856,7 +1856,7 @@ async function voltar6() {
            		faixas_transicao_jogar[i].classList.add(`faixa${i + 1}_animacao`);
         	}
 
-        	tela_ajuda.style.animation = "opacidade_sem_display 1s forwards ease-in";
+        	tela_ajuda.style.animation = "opacidade_sem_display 1s forwards ease-in, bg_opcoes_animation 10s ease-in-out alternate-reverse infinite";
         	tela_ajuda.zIndex = 0;
     		await sleep(1000);
 
